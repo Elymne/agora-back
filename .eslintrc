@@ -1,0 +1,29 @@
+{
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "parser": "babel-eslint"
+    },
+    "env": {
+        "browser": true,
+        "es6": false,
+        "node": true
+    },
+    "rules": {
+        "eqeqeq": "warn",
+        "indent": [
+            "warn",
+            4,
+            {
+                "SwitchCase": 2
+            }
+        ],
+        "semi": ["warn", "never"]
+    },
+    "globals": {
+        "$": true,
+        "require": true
+    },
+    "extends": ["eslint:recommended"]
+}
