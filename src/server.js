@@ -4,6 +4,9 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 const expressSwagger = require("express-swagger-generator")(app)
 
+const { messageRoutes } = require("./api/messages")
+const { defaultRoutes } = require("./api/default")
+
 let options = {
     swaggerDefinition: {
         info: {
@@ -21,9 +24,6 @@ let options = {
 }
 expressSwagger(options)
 
-//const { ProductRoute } = require("./api/products")
-//const { PurchaseRoute } = require("./api/purchases")
-
 // Server config.
 app.use(cors())
 app.use(bodyParser.json())
@@ -33,24 +33,8 @@ app.use(
     }),
 )
 
-app.get("/", (req, res) => {
-    res.json({
-        message: "Message service is running !",
-    })
-})
-
 // Routing.
-//app.use("/products", ProductRoute)
-//app.use("/customers", PurchaseRoute)
-
-app.get("/math", (req, res) => {
-    res.send("B" + "a" + +"a")
-})
-
-app.all("*", (req, res) => {
-    res.status(404).json({
-        error: "not found",
-    })
-})
+app.use("", defaultRoutes)
+app.use("/messages", messageRoutes)
 
 module.exports = app
