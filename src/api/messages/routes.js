@@ -5,7 +5,7 @@ const messageController = require("./controller")
  * @group Message - Operations about messages
  * @route GET /messages
  * @param {UUID} message_id.query.required - message_id
- * @returns {object} 200 - JSON of the message
+ * @returns {object} 200 - JSON of the messages
  * @returns {Error}  default - Unexpected error
  */
 router.get("/", messageController.getMessages)
