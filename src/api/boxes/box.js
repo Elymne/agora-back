@@ -1,11 +1,10 @@
 const Sequelize = require("sequelize")
 const db = require("./../../configurations/db")
 const { useFakeXMLHttpRequest } = require("sinon")
-
 const { Message } = require("./../messages")
 
 const Box = db.define(
-    "Box",
+    "box",
     {
         id: {
             type: Sequelize.UUID,
@@ -24,6 +23,6 @@ const Box = db.define(
     },
 )
 
-Box.hasMany(Message)
+Box.hasMany(Message, { foreignKey: "id_box" })
 
 module.exports = Box

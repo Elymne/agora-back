@@ -52,4 +52,16 @@ const destroyBox = (request, response) => {
         .catch((err) => response.status(500).send(err))
 }
 
-module.exports = { getBoxes, getOneBoxById, createBox, updateBox, destroyBox }
+const addMessage = (request, response) => {
+    const id = request.params.id
+    const message = request.body
+    services
+        .addMessage(id, message)
+        .then((data) => {
+            if (!data) response.sendStatus(404)
+            else response.status(200).send(data)
+        })
+        .catch((err) => response.status(500).send(err))
+}
+
+module.exports = { getBoxes, getOneBoxById, createBox, updateBox, destroyBox, addMessage }

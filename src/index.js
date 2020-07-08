@@ -5,7 +5,7 @@ const http = require("http")
 
 const port = process.env.PORT
 
-sequelize.sync().then(() => {
+sequelize.sync({ force: false }).then(() => {
     const server = http.createServer(app)
 
     server.listen(port, () => {

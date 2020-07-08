@@ -47,4 +47,13 @@ router.put("/:id", boxController.updateBox)
  */
 router.delete("/:id", boxController.destroyBox)
 
+/**
+ * @group Message - Operations about messages
+ * @route GET /messages/{id}
+ * @param {UUID} message_id.query.required - message_id
+ * @returns {object} 200 - JSON of the message
+ * @returns {Error}  default - Unexpected error
+ */
+router.post("/:id/messages", boxController.addMessage)
+
 module.exports = router

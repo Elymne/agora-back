@@ -3,7 +3,7 @@ const db = require("./../../configurations/db")
 const { useFakeXMLHttpRequest } = require("sinon")
 
 const Message = db.define(
-    "Message",
+    "message",
     {
         id: {
             type: Sequelize.UUID,
