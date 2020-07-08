@@ -15,7 +15,7 @@ let options = {
             title: "Swagger",
             version: "1.0.0",
         },
-        host: "localhost:3030",
+        host: "localhost:3020",
         basePath: "",
         produces: ["application/json"],
         schemes: ["http"],
@@ -35,8 +35,10 @@ app.use(
 )
 
 // Routing.
-app.use("", defaultRoutes)
+
 app.use("/messages", messageRoutes)
 app.use("/boxes", boxRoutes)
+
+app.use("", defaultRoutes)
 
 module.exports = app

@@ -1,6 +1,6 @@
 const services = require("./services")
 
-const getBoxes = (request, response) => {
+const getBoxes = (_, response) => {
     services
         .getAll()
         .then((data) => {

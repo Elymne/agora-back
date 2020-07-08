@@ -1,6 +1,6 @@
 const services = require("./services")
 
-const getMessages = (request, response) => {
+const getMessages = (_, response) => {
     services
         .getAll()
         .then((data) => {
