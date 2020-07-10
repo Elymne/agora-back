@@ -1,2 +1,7 @@
+# Modules/packages ignored.
 node_modules
 env
+coverage
+
+# Files ignored.
+test-report.xml
