@@ -23,6 +23,10 @@ const Box = db.define(
     },
 )
 
-Box.hasMany(Message, { foreignKey: "id_box" })
+Box.hasMany(Message, {
+    foreignKey: "id_box",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+})
 
 module.exports = Box
