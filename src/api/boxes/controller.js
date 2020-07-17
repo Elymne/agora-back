@@ -59,7 +59,7 @@ const addMessage = (request, response) => {
         .addMessage(id, message)
         .then((data) => {
             if (!data) response.sendStatus(404)
-            else response.status(200).send(data)
+            else response.status(201).send(data)
         })
         .catch((err) => response.status(500).send(err))
 }
