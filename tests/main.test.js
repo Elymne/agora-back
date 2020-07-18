@@ -10,10 +10,12 @@ describe("Run tests", () => {
         await db.sync({ force: true })
     })
 
-    boxesRoutesTests()
+    // Tests boite-blanche.
     boxesServicesTests()
-    messagesRoutesTests()
     messagesServicesTests()
+
+    boxesRoutesTests()
+    messagesRoutesTests()
     defaultRoutesTests()
 
     afterAll(() => {

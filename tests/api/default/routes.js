@@ -15,15 +15,15 @@ const defaultRoutesTests = () => {
             expect(res.body.message).toEqual(defaultMessage)
         })
 
+        it("GET /banana", async () => {
+            const res = await request.get("/banana")
+            expect(res.body.message).toEqual(bananaMessage)
+        })
+
         it("ALL /*", async () => {
             const res = await request.get(wrongRoute)
             expect(res.status).toEqual(404)
             expect(res.body.error).toEqual(errorMessage)
-        })
-
-        it("GET /banana", async () => {
-            const res = await request.get("/banana")
-            expect(res.body.message).toEqual(bananaMessage)
         })
     })
 }

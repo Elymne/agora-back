@@ -9,12 +9,13 @@ const message = {
 }
 const wrongMessage = {
     contanteu: "Et ça ce soir, ça va se savoir !",
+    id_box: 1,
 }
 const updatedMessage = {
     content: "Gros boule de l'est",
 }
 let messageID
-const wrongID = "3560141c-cd83-4fb2-bc00-463c2df56912"
+const wrongID = "3560141c-cd83-4fb2-bc00-463c2df56"
 
 const messagesRoutesTests = () => {
     describe("Starting client http requests for messages", () => {
@@ -48,12 +49,17 @@ const messagesRoutesTests = () => {
             expect(res.status).toEqual(404)
         })
 
-        it("PUT /messages", async () => {
+        it("PUT /messages/{:id}", async () => {
             const res = await request.put(`${messageRoute}/${messageID}`).send(updatedMessage)
             expect(res.status).toEqual(200)
             const updatedRes = await request.get(`${messageRoute}/${messageID}`)
             expect(updatedRes.status).toEqual(200)
             expect(updatedRes.body.content).toEqual(updatedMessage.content)
+        })
+
+        it("PUT /messages/{:id} (http:500)", async () => {
+            const res = await request.put(`${messageRoute}/${messageID}`).send(wrongMessage)
+            expect(res.status).toEqual(500)
         })
 
         it("DELETE /messages", async () => {
