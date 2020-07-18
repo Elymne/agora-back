@@ -13,13 +13,8 @@ const getOneMessageById = (request, response) => {
     services
         .getOneById(id)
         .then((data) => {
-            if (!data) {
-                response.sendStatus(404).send(ENUM_RESPONSE.NO_DATA_FOUND)
-                return
-            } else {
-                response.status(200).send(data)
-                return
-            }
+            if (!data) response.sendStatus(404).send(ENUM_RESPONSE.NO_DATA_FOUND)
+            else response.status(200).send(data)
         })
         .catch((err) => response.status(500).sendStatus(err))
 }

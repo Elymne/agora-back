@@ -12,13 +12,8 @@ const getOneBoxById = (request, response) => {
     services
         .getOneById(id)
         .then((data) => {
-            if (!data) {
-                response.sendStatus(404)
-                return
-            } else {
-                response.status(200).send(data)
-                return
-            }
+            if (!data) response.sendStatus(404)
+            else response.status(200).send(data)
         })
         .catch((err) => response.status(500).sendStatus(err))
 }

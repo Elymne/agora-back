@@ -8,8 +8,15 @@ const boxRoute = "/boxes"
 const box = {
     title: "Ici jit ma grosse boite",
 }
+const wrongBox = {
+    ptdr: "ok",
+}
 const messageBox = {
     content: "Haha, énorme",
+}
+const wrongMessageBox = {
+    contente: "contenu incroyable",
+    id_box: 123,
 }
 const updatedBox = {
     title: "Ma grosse boite est devenu un grand garçon",
@@ -28,6 +35,12 @@ const boxesRoutesTests = () => {
             expect(res.body.title).toEqual(box.title)
 
             boxID = res.body.id
+        })
+
+        it("POST /boxes (http:500)", async () => {
+            const res = await request.post(boxRoute).send(wrongBox)
+
+            expect(res.status).toEqual(500)
         })
 
         it("GET /boxes", async () => {
@@ -71,6 +84,13 @@ const boxesRoutesTests = () => {
 
             const messageAddedRes = await request.get(`${messageRoute}/${messageID}`)
             expect(messageAddedRes.body.content).toEqual(messageBox.content)
+        })
+
+        it("POST /boxes/{:id}/mesages (http:500)", async () => {
+            const res = await request.post(`${boxRoute}/${boxID}${messageRoute}`).send(wrongMessageBox)
+            messageID = res.body.id
+
+            expect(res.status).toEqual(500)
         })
 
         it("DELETE /boxes/{:id}", async () => {
