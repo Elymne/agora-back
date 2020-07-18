@@ -4,8 +4,7 @@ const getMessages = (_, response) => {
     services
         .getAll()
         .then((data) => {
-            if (!data) response.sendStatus(404)
-            else response.status(200).send(data)
+            response.status(200).send(data)
         })
         .catch((err) => response.status(500).send(err))
 }
@@ -26,8 +25,7 @@ const createMessage = (request, response) => {
     services
         .create(message)
         .then((data) => {
-            if (!data) response.sendStatus(404)
-            else response.status(201).send(data)
+            response.status(201).send(data)
         })
         .catch((err) => response.status(500).send(err))
 }

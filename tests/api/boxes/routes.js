@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 const app = require("../../../src/server")
 const supertest = require("supertest")
-
 const request = supertest(app)
+
 const messageRoute = "/messages"
 const boxRoute = "/boxes"
 const box = {
@@ -18,6 +18,7 @@ const updatedBox = {
 let boxID
 let messageID
 const wrongID = "3560141c-cd83-4fb2-bc00-463c2df56912"
+const wrongUUID = "3560141c-cd83-4fb2-bc00-463c2df5691244"
 
 const boxesRoutesTests = () => {
     describe("Starting client http requests for boxes", () => {
@@ -46,8 +47,14 @@ const boxesRoutesTests = () => {
             expect(res.body.title).toEqual(box.title)
         })
 
-        it("GET /boxes check not found", async () => {
+        it("GET /boxes/{:id} (http:404)", async () => {
             const res = await request.get(`${boxRoute}/${wrongID}`)
+
+            expect(res.status).toEqual(404)
+        })
+
+        it("GET /boxes/{:id} (http:505)", async () => {
+            const res = await request.get(`${boxRoute}/${wrongUUID}`)
 
             expect(res.status).toEqual(404)
         })

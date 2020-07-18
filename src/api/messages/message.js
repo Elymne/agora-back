@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize")
 const db = require("./../../configurations/db")
-const { useFakeXMLHttpRequest } = require("sinon")
 
 const Message = db.define(
     "message",
@@ -14,7 +13,7 @@ const Message = db.define(
         },
         content: {
             type: Sequelize.STRING,
-            allowNull: useFakeXMLHttpRequest,
+            allowNull: false,
         },
     },
     {

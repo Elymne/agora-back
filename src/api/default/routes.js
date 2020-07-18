@@ -13,14 +13,16 @@ router.get("/", (request, response) => {
     })
 })
 
+router.get("/banana", (request, response) => {
+    response.json({
+        message: "B" + "a" + +"a",
+    })
+})
+
 router.all("*", (request, response) => {
     response.status(404).json({
         error: "not found",
     })
-})
-
-router.get("/math", (req, res) => {
-    res.send("B" + "a" + +"a")
 })
 
 module.exports = router
