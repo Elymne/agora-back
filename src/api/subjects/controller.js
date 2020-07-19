@@ -48,4 +48,13 @@ const destroySubject = (request, response) => {
         .catch((err) => response.status(500).send(err))
 }
 
-module.exports = { getSubjects, getOneSubjectByID, createSubject, updateSubject, destroySubject }
+const addBox = (request, response) => {
+    const id = request.params.id
+    const box = request.body
+    services
+        .addBox(id, box)
+        .then((result) => response.status(201).send(result))
+        .catch((err) => response.status(500).send(err))
+}
+
+module.exports = { getSubjects, getOneSubjectByID, createSubject, updateSubject, destroySubject, addBox }

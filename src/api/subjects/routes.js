@@ -46,4 +46,14 @@ router.put("/:id", subjectController.updateSubject)
  */
 router.delete("/:id", subjectController.destroySubject)
 
+/**
+ * @group Subject - Operations about subjects
+ * @route POST /subjects/{id}/boxes
+ * @param {UUID} subject_id.query.required - subject_id
+ * @param {object} box_object.body.required - box_object
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
+router.post("/:id", subjectController.addBox)
+
 module.exports = router

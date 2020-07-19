@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize")
 const db = require("./../../configurations/db")
+const Box = require("../boxes/box")
 
 const Subject = db.define(
     "subject",
@@ -24,5 +25,11 @@ const Subject = db.define(
         tableName: "subject",
     },
 )
+
+Subject.hasMany(Box, {
+    foreignKey: "id_subject",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+})
 
 module.exports = Subject

@@ -1,5 +1,7 @@
 const Message = require("./message")
 
+// Basics CRUD functions (create, read, update, delete).
+
 const getAll = () => Message.findAll()
 
 const getOneByID = (id) => Message.findByPk(id)

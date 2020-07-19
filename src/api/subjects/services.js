@@ -1,4 +1,7 @@
 const Subject = require("./subject")
+const Box = require("../boxes/box")
+
+// Basics CRUD functions (create, read, update, delete).
 
 const getAll = () => Subject.findAll()
 
@@ -10,4 +13,17 @@ const update = (id, subject) => Subject.update(subject, { where: { id: id } })
 
 const destroy = (id) => Subject.destroy({ where: { id: id } })
 
-module.exports = { getAll, getOneByID, create, update, destroy }
+// Other functions.
+
+/**
+ * Add a box linked to a subject given his id.
+ *
+ * @param {*} id - id of the box
+ * @param {*} box - box object
+ */
+const addSubject = (id, box) => {
+    box.id_subject = id
+    return Box.create(box)
+}
+
+module.exports = { getAll, getOneByID, create, update, destroy, addSubject }

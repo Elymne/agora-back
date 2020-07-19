@@ -48,7 +48,7 @@ router.delete("/:id", boxController.destroyBox)
 
 /**
  * @group Message - Operations about messages
- * @route GET /boxes/{id}/messages
+ * @route POST /boxes/{id}/messages
  * @param {UUID} box_id.query.required - box_id
  * @param {object} message_object.body.required
  * @returns {object} 201 - JSON of the message
