@@ -27,7 +27,7 @@ const boxesServicesTests = () => {
         })
 
         it("get one", async () => {
-            await services.getOneById(idBox).then((data) => {
+            await services.getOneByID(idBox).then((data) => {
                 expect(data.title).toEqual(box.title)
             })
         })
@@ -45,7 +45,7 @@ const boxesServicesTests = () => {
         })
 
         it("update one (2)", async () => {
-            await services.getOneById(idBox).then((data) => {
+            await services.getOneByID(idBox).then((data) => {
                 expect(data.title).toEqual(updatedBox.title)
             })
         })
@@ -58,7 +58,7 @@ const boxesServicesTests = () => {
         })
 
         it("add message (2)", async () => {
-            await services.getOneById(idBox).then((data) => {
+            await services.getOneByID(idBox).then((data) => {
                 expect(data.messages.length).toEqual(1)
             })
         })
@@ -70,7 +70,7 @@ const boxesServicesTests = () => {
         })
 
         it("delete one (2)", async () => {
-            await messageServices.getOneById(idMessage).then((data) => {
+            await messageServices.getOneByID(idMessage).then((data) => {
                 expect(data).toEqual(null)
             })
         })

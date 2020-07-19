@@ -21,7 +21,7 @@ const messagesServicesTests = () => {
         })
 
         it("get one", async () => {
-            await services.getOneById(idMessage).then((data) => {
+            await services.getOneByID(idMessage).then((data) => {
                 expect(data.content).toEqual(message.content)
             })
         })
@@ -39,7 +39,7 @@ const messagesServicesTests = () => {
         })
 
         it("update one (2)", async () => {
-            await services.getOneById(idMessage).then((data) => {
+            await services.getOneByID(idMessage).then((data) => {
                 expect(data.content).toEqual(updatedMessage.content)
             })
         })

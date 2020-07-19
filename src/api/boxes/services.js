@@ -5,7 +5,7 @@ const { Message } = require("../messages")
 
 const getAll = () => Box.findAll({ include: Message })
 
-const getOneById = (id) => Box.findByPk(id, { include: Message })
+const getOneByID = (id) => Box.findByPk(id, { include: Message })
 
 const create = (box) => Box.create(box)
 
@@ -28,4 +28,4 @@ const addMessage = (id, message) => {
     return Message.create(result)
 }
 
-module.exports = { getAll, getOneById, create, update, destroy, addMessage }
+module.exports = { getAll, getOneByID, create, update, destroy, addMessage }

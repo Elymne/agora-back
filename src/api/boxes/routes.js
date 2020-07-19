@@ -4,8 +4,7 @@ const boxController = require("./controller")
 /**
  * @group Box - Operations about boxes
  * @route GET /boxes
- * @param {UUID} message_id.query.required - box_id
- * @returns {object} 200 - JSON of the boxes
+ * @returns {array} 200 - JSON of the boxes
  * @returns {Error}  default - Unexpected error
  */
 router.get("/", boxController.getBoxes)
@@ -22,7 +21,7 @@ router.get("/:id", boxController.getOneBoxById)
 /**
  * @group Box - Operations about boxes
  * @route POST /boxes
- * @param {string} message_content.params.required - boxes_content
+ * @param {object} box_object.body.required - box_object
  * @returns {object} 201
  * @returns {Error}  default - Unexpected error
  */
@@ -30,9 +29,9 @@ router.post("/", boxController.createBox)
 
 /**
  * @group Box - Operations about boxes
- * @route PUT /boxes
+ * @route PUT /boxes/{id}
  * @param {UUID} box_id.query.required - box_id
- * @param {string} box_content.params.required - box_content
+ * @param {object} box_object.body.required - box_object
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
@@ -40,7 +39,7 @@ router.put("/:id", boxController.updateBox)
 
 /**
  * @group Box - Operations about boxes
- * @route DELETE /boxes
+ * @route DELETE /boxes/{id}
  * @param {UUID} box_id.query.required - box_id
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
@@ -49,9 +48,10 @@ router.delete("/:id", boxController.destroyBox)
 
 /**
  * @group Message - Operations about messages
- * @route GET /messages/{id}
- * @param {UUID} message_id.query.required - message_id
- * @returns {object} 200 - JSON of the message
+ * @route GET /boxes/{id}/messages
+ * @param {UUID} box_id.query.required - box_id
+ * @param {object} message_object.body.required
+ * @returns {object} 201 - JSON of the message
  * @returns {Error}  default - Unexpected error
  */
 router.post("/:id/messages", boxController.addMessage)

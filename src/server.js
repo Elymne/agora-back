@@ -4,9 +4,11 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 const expressSwagger = require("express-swagger-generator")(app)
 
-const { defaultRoutes } = require("./api/default")
 const { messageRoutes } = require("./api/messages")
 const { boxRoutes } = require("./api/boxes")
+const { subjectRoutes } = require("./api/subjects")
+
+const { defaultRoutes } = require("./api/default")
 
 let options = {
     swaggerDefinition: {
@@ -38,6 +40,7 @@ app.use(
 
 app.use("/messages", messageRoutes)
 app.use("/boxes", boxRoutes)
+app.use("/subjects", subjectRoutes)
 
 app.use("", defaultRoutes)
 

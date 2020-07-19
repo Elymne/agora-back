@@ -3,17 +3,17 @@ const services = require("./services")
 const getBoxes = (_, response) => {
     services
         .getAll()
-        .then((data) => response.status(200).send(data))
+        .then((result) => response.status(200).send(result))
         .catch((err) => response.status(500).send(err))
 }
 
 const getOneBoxById = (request, response) => {
     const { id } = request.params
     services
-        .getOneById(id)
-        .then((data) => {
-            if (!data) response.sendStatus(404)
-            else response.status(200).send(data)
+        .getOneByID(id)
+        .then((result) => {
+            if (!result) response.sendStatus(404)
+            else response.status(200).send(result)
         })
         .catch((err) => response.status(500).sendStatus(err))
 }
@@ -22,7 +22,7 @@ const createBox = (request, response) => {
     const message = request.body
     services
         .create(message)
-        .then((data) => response.status(201).send(data))
+        .then((result) => response.status(201).send(result))
         .catch((err) => response.status(500).send(err))
 }
 
@@ -31,7 +31,7 @@ const updateBox = (request, response) => {
     const message = request.body
     services
         .update(id, message)
-        .then((data) => response.status(200).send(data))
+        .then((result) => response.status(200).send(result))
         .catch((err) => response.status(500).send(err))
 }
 
@@ -48,7 +48,7 @@ const addMessage = (request, response) => {
     const message = request.body
     services
         .addMessage(id, message)
-        .then((data) => response.status(201).send(data))
+        .then((result) => response.status(201).send(result))
         .catch((err) => response.status(500).send(err))
 }
 
